@@ -2889,13 +2889,17 @@ hr {
   }
 }
 .footer {
-  margin-top: 80px;
+  padding: 3px 0 !important;
   padding: 10px 0;
   background: #f5f5f5;
   color: #666;
 }
+.footer-inner a {
+  border: none
+}
 .footer-inner {
-  margin: 0 auto;
+  text-align: center !important;
+  margin: 12px auto 0 auto !important;
   text-align: left;
 }
 @media (max-width: 767px) {
