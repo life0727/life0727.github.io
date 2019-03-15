@@ -2610,7 +2610,7 @@ hr {
   background: #f5f5f5;
 }
 .header-inner {
-  padding: 25px 0 20px;
+  padding: 10px 0 10px !important;
 }
 .header-inner:before,
 .header-inner:after {
@@ -2889,7 +2889,7 @@ hr {
   }
 }
 .footer {
-  padding: 3px 0 !important;
+  padding: 0px 0 !important;
   padding: 10px 0;
   background: #f5f5f5;
   color: #666;
