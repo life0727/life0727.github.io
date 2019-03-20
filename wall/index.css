@@ -1,0 +1,22 @@
+
+.list_box{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap 
+}
+
+.list_box>.column{
+    width: calc(33% - .66667rem);
+    background: orange;
+    position: relative;
+    left: 0;
+    top: 0;
+    min-height: 13rem;
+    margin-bottom: 1rem;
+    color: black;   
+}
+.list_box:after{
+    content: '' !important;
+
+    width: calc(33% - .66667rem);
+};
