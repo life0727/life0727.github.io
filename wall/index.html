@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="liiffe                                                              111111111121211212">
+<meta name="description" content="liiffe                                                                                       名称:                                  内容:                                  Yes">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liiffe&#39;s Blog">
 <meta property="og:url" content="https://life0727.github.io/wall/index.html">
 <meta property="og:site_name" content="liiffe&#39;s Blog">
-<meta property="og:description" content="liiffe                                                              111111111121211212">
+<meta property="og:description" content="liiffe                                                                                       名称:                                  内容:                                  Yes">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-20T08:47:01.057Z">
+<meta property="og:updated_time" content="2019-03-20T13:19:53.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
-<meta name="twitter:description" content="liiffe                                                              111111111121211212">
+<meta name="twitter:description" content="liiffe                                                                                       名称:                                  内容:                                  Yes">
 
 
 
@@ -313,30 +313,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>liiffe</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" rel="stylesheet"> -->
     <link href="index.css" rel="stylesheet">
+    <link href="util/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-polyfill/6.0.2/polyfill.min.js"></script>
     <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
-      
+    <script src="util/script.js"></script> 
 </head>
 <body>
     <div id="app">
-        <!-- <h2>留言墙</h2> -->
-        <span class="animated wobble">111111111121211212</span>
+        <div class="btn" style="border:none;width: 100%;background: white">
+            <div class="btn-back">
+                <span style="position:absolute;top:10px;left:15px;">名称:</span>
+                <input style="position:absolute;top:10px;left:55px;border:1px solid #ccc;border-radius: 4px;width: 50%;" type="text" name>
+                <span style="position:absolute;top:45px;left:15px;">内容:</span>
+                <textarea style="width:65%;max-height: 5rem;border:1px solid #ccc;position: absolute;top: 45px;left: 55px;"></textarea>
+                <button class="yes">Yes</button>
+                <button class="no">No</button>
+            </div>
+            <div style="position: absolute;width: 100%;height: 6rem;z-index: 1000;;background: white">
+                <div class="btn-front" style="background:linear-gradient(135deg,#f21368,#e80505)">来都来了，不说点啥？</div>
+            </div>
+        </div>
+        <hr>
         <div class="list_box">
-            <div class="column" v-for="i in data" :key="i" v-html="i.content">
+            <div class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
+                <p v-html="i.time" style="margin-bottom:5px;"></p>
+                <p v-html="i.content" style="margin-bottom:20px;"></p>
+                <p v-html="i.name" style="margin:0;position: absolute;right: 10px;bottom: 10px;"></p>
             </div>
         </div>
         <!-- <p style="height: 20px;" v-for="i in data" :key="i" v-html="i.content"></p> -->
     </div>
 </body>
-<script src="index.js"></script>
 
 <script>
-
+Date.prototype.Format = function(fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 </script>
-
+<script src="index.js"></script>
 </html>
         
       </div>

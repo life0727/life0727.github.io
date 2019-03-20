@@ -7,11 +7,13 @@ var YG = new Wilddog("https://life0727.wilddogio.com/wallData");
 //     });
 //     return WallDataArr
 // }
+
 async function getWallData(){
     let WallDataArr = [];
     YG.on('child_added', function(datasnapshot) {
-        let resData = datasnapshot.val();
-        WallDataArr.push(resData)
+        let obj = Object.assign({},datasnapshot.val());
+        obj.time = new Date(obj.time).Format("MM.dd hh:mm")
+        WallDataArr.push(obj)
     });
     return WallDataArr
 }

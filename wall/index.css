@@ -6,17 +6,18 @@
 }
 
 .list_box>.column{
-    width: calc(33% - .66667rem);
+    width: calc(30% - .96667rem);
     background: orange;
     position: relative;
     left: 0;
     top: 0;
-    min-height: 13rem;
-    margin-bottom: 1rem;
+    padding: 10px;
+    margin-bottom: 1.2rem;
     color: black;   
+    align-items: flex-start
 }
 .list_box:after{
     content: '' !important;
-
-    width: calc(33% - .66667rem);
+    padding: 10px;
+    width: calc(30% - .96667rem);
 };
