@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="liiffe&#39;s Blog">
 <meta property="og:description" content="名称:                                  内容:                                  Yes                 No">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T04:16:24.597Z">
+<meta property="og:updated_time" content="2019-03-21T07:31:18.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
 <meta name="twitter:description" content="名称:                                  内容:                                  Yes                 No">
@@ -331,7 +331,7 @@
         </div>
         <hr>
         <div class="list_box">
-            <div class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
+            <div ref="box" class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
                 <p v-html="i.time" style="margin-bottom:5px;"></p>
                 <p v-html="i.content" style="margin-bottom:20px;"></p>
                 <p v-html="i.name" style="margin:0;position: absolute;right: 10px;bottom: 10px;"></p>
@@ -357,6 +357,7 @@ Date.prototype.Format = function(fmt) {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
+
 </script>
 <script src="index.js"></script>
 

@@ -7,13 +7,13 @@
 
 .list_box>.column{
     width: calc(30% - .96667rem);
-    background: orange;
+    opacity: 0.78;
     position: relative;
     left: 0;
     top: 0;
     padding: 10px;
     margin-bottom: 1.2rem;
-    color: black;   
+    color: #333;   
     align-items: flex-start
 }
 @media (max-width: 767px){
