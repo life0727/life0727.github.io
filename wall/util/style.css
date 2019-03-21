@@ -107,6 +107,10 @@
   opacity: 1;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
 
+  .btn.is-open .btn-front {
+    opacity: 0;
+    }
+
 .btn[data-direction="left"] .btn-back, .btn[data-direction="right"] .btn-back {
   -webkit-transform: translateZ(-1px) rotateY(180deg);
           transform: translateZ(-1px) rotateY(180deg); }

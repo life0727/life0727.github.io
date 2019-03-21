@@ -16,6 +16,11 @@
     color: black;   
     align-items: flex-start
 }
+@media (max-width: 767px){
+    .list_box>.column{
+        width: 98%;;
+    }
+}
 .list_box:after{
     content: '' !important;
     padding: 10px;
