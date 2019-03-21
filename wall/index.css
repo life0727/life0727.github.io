@@ -33,18 +33,26 @@
 }
 .el-dialog__body .el-input__inner:hover{
     border-color: #333;
+    transition: 0.5s;
 }
 .el-dialog__body .el-input__inner:focus{
     border-color: #333;
 }
 .el-dialog__body .el-textarea__inner:hover{
     border-color: #333;
+    transition: 0.5s;
 }
 .el-dialog__body .el-textarea__inner:focus{
     border-color: #333;
 }
+.el-dialog__body .el-input__inner{
+    caret-color:#333;
+    font-size: 12px;
+}
 .el-dialog__body .el-textarea__inner{
     min-height: 50px !important;
+    caret-color:#333;
+    line-height: 1.5;
 }
 .wallDialog .el-dialog__body{
     padding-bottom: 10px;
@@ -57,13 +65,15 @@
 .wallDialog .el-dialog__footer .dialog-footer .el-button--primary,.wallDialog .el-dialog__footer .dialog-footer .el-button--default{
     color: #333;
     background-color:white;
-    border-color: #999;
+    border-color: #ccc;
 }
 .wallDialog .el-dialog__footer .dialog-footer .el-button--primary:hover{
     border-color: #333;
+    transition: 0.5s;
 }
 .wallDialog .el-dialog__footer .dialog-footer .el-button--default:hover{
     border-color: #333;
+    transition: 0.5s;
 }
 .list_box{
     display: flex;
