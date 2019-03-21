@@ -14,7 +14,6 @@ async function getWallData(){
         let obj = Object.assign({},datasnapshot.val());
         obj.time = JSON.parse(datasnapshot.val().time.replace(/T/g," ")).slice(0,16)
         WallDataArr.unshift(obj)
-        console.log(WallDataArr)
     });
     return WallDataArr
 }
