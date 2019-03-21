@@ -56,9 +56,9 @@
 }
 @supports (-webkit-mask: none) and (not (caret-color: #333;)) {
     .el-dialog__body .el-input__inner { color: #333; }
-    .el-dialog__body .el-input__inner::first-line { color: #333; }
+    
     .el-dialog__body .el-textarea__inner { color: #333; }
-    .el-dialog__body .el-textarea__inner::first-line { color: #333; }
+    
 }
 .wallDialog .el-dialog__body{
     padding-bottom: 10px;
