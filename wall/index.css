@@ -1,3 +1,9 @@
+.el-loading-spinner .el-loading-text{
+    color:#FFA07A !important;
+}
+.el-loading-spinner .el-icon-loading{
+    color:#FFA07A !important;
+}
 .gladYouCame{
     font-size:22px;
     text-align: center;
@@ -82,6 +88,7 @@
     transition: 0.5s;
 }
 .list_box{
+    min-height: 20rem;
     display: flex;
     justify-content:space-between;
     flex-wrap: wrap 
@@ -114,4 +121,4 @@
     content: '' !important;
     padding: 10px;
     width: calc(30% - .96667rem);
-};
+}

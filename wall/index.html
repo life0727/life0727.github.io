@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="liiffe&#39;s Blog">
 <meta property="og:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T11:50:37.326Z">
+<meta property="og:updated_time" content="2019-03-21T12:19:29.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
 <meta name="twitter:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
@@ -323,7 +323,7 @@
             <el-button class="openWall" @click="openWall">我要上墙~</el-button>
         </el-row>
         <hr>
-        <div class="list_box">
+        <div class="list_box" v-loading="data.length == 0" element-loading-text="评论加载中。。" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.1)"> 
             <p style="text-align:center;margin-top:15px;width: 100%" v-show="data.length == 0">暂无评论~ 抢个沙发吧</p>
             <div ref="box" class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
                 <p v-html="i.time" style="margin-bottom:5px;"></p>
