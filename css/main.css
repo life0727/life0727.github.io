@@ -1094,6 +1094,7 @@ pre .javascript .function {
 }
 .header-inner {
   position: relative;
+  padding: 5px 0 5px !important;
 }
 .headband {
   height: 3px;
@@ -1822,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #df09a2;
+  background: #45b598;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -1945,12 +1946,17 @@ pre .javascript .function {
 .footer {
   font-size: 14px;
   color: #999;
+  padding: 0px 0 !important;
 }
 .footer img {
   border: none;
 }
 .footer-inner {
-  text-align: center;
+  text-align: center !important;
+  margin: 12px auto 0 auto !important;
+}
+.footer-inner a {
+  border: none;
 }
 .with-love {
   display: inline-block;
@@ -2610,7 +2616,7 @@ hr {
   background: #f5f5f5;
 }
 .header-inner {
-  padding: 10px 0 10px !important;
+  padding: 25px 0 20px;
 }
 .header-inner:before,
 .header-inner:after {
@@ -2889,17 +2895,13 @@ hr {
   }
 }
 .footer {
-  padding: 0px 0 !important;
+  margin-top: 80px;
   padding: 10px 0;
   background: #f5f5f5;
   color: #666;
 }
-.footer-inner a {
-  border: none
-}
 .footer-inner {
-  text-align: center !important;
-  margin: 12px auto 0 auto !important;
+  margin: 0 auto;
   text-align: left;
 }
 @media (max-width: 767px) {
@@ -2909,9 +2911,9 @@ hr {
   }
 }
 .post {
-  margin-top: 60px;
-  margin-bottom: 60px;
-  padding: 25px;
-  -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
-  -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px 25px 25px 25px;
+  -webkit-box-shadow: 0px 0px 10px rgba(202,203,203,0.3);
+  -moz-box-shadow: 3px 0px 10px rgba(202,203,204,0.3);
 }

@@ -47,12 +47,19 @@
 }
 .el-dialog__body .el-input__inner{
     caret-color:#333;
+    line-height: 12px;
     font-size: 12px;
 }
 .el-dialog__body .el-textarea__inner{
     min-height: 50px !important;
     caret-color:#333;
-    line-height: 1.5;
+    line-height: 2.5;
+}
+@supports (-webkit-mask: none) and (not (caret-color: red)) {
+    .el-dialog__body .el-input__inner { color: #333; }
+    .el-dialog__body .el-input__inner::first-line { color: #333; }
+    .el-dialog__body .el-textarea__inner { color: #333; }
+    .el-dialog__body .el-textarea__inner::first-line { color: #333; }
 }
 .wallDialog .el-dialog__body{
     padding-bottom: 10px;
