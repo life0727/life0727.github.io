@@ -1,4 +1,70 @@
-
+.gladYouCame{
+    font-size:22px;
+    text-align: center;
+    margin: 0 !important;
+}
+@media (max-width: 767px){
+    .gladYouCame{
+        font-size:15px;
+    }
+}
+.openWall{
+    background: linear-gradient(135deg,#F4A460,#FF7256) !important;
+    box-shadow: 0 4px 8px rgba(232,5,5,.3);
+    border: 1px solid #FFA07A !important;
+    color: white !important; 
+    font-size: 16px !important;
+}
+.openWall:hover{
+    opacity: 0.8;
+}
+.wallDialog .el-dialog{
+    width: 30%;
+    border-radius: 15px !important;
+}
+@media (max-width: 767px){
+    .wallDialog .el-dialog{
+        width: 80% !important;
+        border-radius: 15px !important;
+    }
+}
+.wallDialog .el-dialog__header{
+    display: none;
+}
+.el-dialog__body .el-input__inner:hover{
+    border-color: #333;
+}
+.el-dialog__body .el-input__inner:focus{
+    border-color: #333;
+}
+.el-dialog__body .el-textarea__inner:hover{
+    border-color: #333;
+}
+.el-dialog__body .el-textarea__inner:focus{
+    border-color: #333;
+}
+.el-dialog__body .el-textarea__inner{
+    min-height: 50px !important;
+}
+.wallDialog .el-dialog__body{
+    padding-bottom: 10px;
+    margin-left: 0px;
+    padding-left: 10px;
+}
+.wallDialog .el-dialog__footer .dialog-footer button{
+    padding: 8px 15px;
+}
+.wallDialog .el-dialog__footer .dialog-footer .el-button--primary,.wallDialog .el-dialog__footer .dialog-footer .el-button--default{
+    color: #333;
+    background-color:white;
+    border-color: #999;
+}
+.wallDialog .el-dialog__footer .dialog-footer .el-button--primary:hover{
+    border-color: #333;
+}
+.wallDialog .el-dialog__footer .dialog-footer .el-button--default:hover{
+    border-color: #333;
+}
 .list_box{
     display: flex;
     justify-content:space-between;
@@ -6,6 +72,7 @@
 }
 
 .list_box>.column{
+    cursor: pointer;
     width: calc(30% - .96667rem);
     opacity: 0.78;
     position: relative;
@@ -14,7 +81,13 @@
     padding: 10px;
     margin-bottom: 1.2rem;
     color: #333;   
+    border-radius: 5px;
     align-items: flex-start
+}
+.list_box>.column:hover{
+    -webkit-transform:scale(1.1);
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
 }
 @media (max-width: 767px){
     .list_box>.column{

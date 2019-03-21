@@ -7,14 +7,13 @@ var YG = new Wilddog("https://life0727.wilddogio.com/wallData");
 //     });
 //     return WallDataArr
 // }
-
+//size 35
 async function getWallData(){
     let WallDataArr = [];
     YG.on('child_added', function(datasnapshot) {
         let obj = Object.assign({},datasnapshot.val());
         obj.time = JSON.parse(datasnapshot.val().time.replace(/T/g," ")).slice(0,16)
         WallDataArr.push(obj)
-        console.log(WallDataArr)
     });
     return WallDataArr
 }
@@ -22,7 +21,12 @@ async function getWallData(){
 var app = new Vue({
     el: '#app',
     data: {
-        data:[]
+        data:[],
+        form:{
+            name:'',
+            content:''
+        },
+        openWallSwitch:false
     },
     created() {
         getWallData()
@@ -31,7 +35,7 @@ var app = new Vue({
                     })
     },
     mounted() {    
-                   
+         
     },
     updated() {
         let boxList = this.$refs.box;
@@ -43,7 +47,9 @@ var app = new Vue({
         });
     },
     methods: {
-       
+        openWall(){
+            this.openWallSwitch = true;  
+        }
     },
     // watch:{
     //     data:{

@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="名称:                                  内容:                                  Yes                 No">
+<meta name="description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liiffe&#39;s Blog">
 <meta property="og:url" content="https://life0727.github.io/wall/index.html">
 <meta property="og:site_name" content="liiffe&#39;s Blog">
-<meta property="og:description" content="名称:                                  内容:                                  Yes                 No">
+<meta property="og:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T07:31:18.843Z">
+<meta property="og:updated_time" content="2019-03-21T10:35:03.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
-<meta name="twitter:description" content="名称:                                  内容:                                  Yes                 No">
+<meta name="twitter:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 
 
 
@@ -308,39 +308,46 @@
 
     <!-- <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" rel="stylesheet"> -->
     <link href="index.css" rel="stylesheet">
-    <link href="util/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/element-ui/2.4.1/theme-chalk/index.css">
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-polyfill/6.0.2/polyfill.min.js"></script>
     <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
-    <script src="util/script.js"></script> 
-
+    <script src="https://cdn.bootcss.com/element-ui/2.4.1/index.js"></script>
+    
 
     <div id="app">
-        <div class="btn" style="border:none;width: 100%;background: white">
-            <div class="btn-back">
-                <span style="position:absolute;top:10px;left:15px;">名称:</span>
-                <input style="position:absolute;top:10px;left:55px;border:1px solid #ccc;border-radius: 4px;width: 50%;" type="text" name>
-                <span style="position:absolute;top:45px;left:15px;">内容:</span>
-                <textarea style="width:65%;max-height: 5rem;border:1px solid #ccc;position: absolute;top: 45px;left: 55px;"></textarea>
-                <button class="yes">Yes</button>
-                <button class="no">No</button>
-            </div>
-            <div style="position: absolute;width: 100%;height: 6rem;z-index: 1000;;background: white">
-                <div class="btn-front" style="background:linear-gradient(135deg,#f21368,#e80505)">来都来了，不说点啥？</div>
-            </div>
-        </div>
+        <i class="fa fa-quote-left" style="display:block"></i>
+          <p class="gladYouCame"> The sun goes down，The stars come out<br>And all that counts，Is here and now<br>My universe will never be the same<br>I'm glad you came <i class="fa fa-heart"></i></p>
+          <i class="fa fa-quote-right" style="display:block;float: right;"></i>  
+        <el-row style="text-align: center;margin-top: 15px;">
+            <el-button class="openWall" @click="openWall">我要上墙~</el-button>
+        </el-row>
         <hr>
         <div class="list_box">
             <div ref="box" class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
                 <p v-html="i.time" style="margin-bottom:5px;"></p>
-                <p v-html="i.content" style="margin-bottom:20px;"></p>
-                <p v-html="i.name" style="margin:0;position: absolute;right: 10px;bottom: 10px;"></p>
+                <p v-html="i.content" style="margin-bottom:20px;font-size: 1.2rem"></p>
+                <p v-html="i.name" style="margin:0;position: absolute;right: 15px;bottom: 10px;"></p>
             </div>
         </div>
-        <!-- <p style="height: 20px;" v-for="i in data" :key="i" v-html="i.content"></p> -->
+
+        <el-dialog :visible.sync="openWallSwitch" :append-to-body="true" class="wallDialog">
+            <el-form :model="form">
+                <el-form-item label="名字~" label-width="4rem">
+                    <el-input v-model="form.name" autocomplete="off" placeholder="‘高富帅’ ? ‘高富帅’ : ‘白富美’"></el-input>
+                </el-form-item>
+                <el-form-item label="聊一个~" label-width="4.2rem" style="margin-bottom:0px;">
+                    <el-input type="textarea" v-model="form.content" placeholder="23333......"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="openWallSwitch = false">取 消</el-button>
+                <el-button type="primary" @click="openWallSwitch = false">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
 
-
+<script src="index.js"></script>
 <script>
 Date.prototype.Format = function(fmt) {
     var o = {
@@ -359,7 +366,7 @@ Date.prototype.Format = function(fmt) {
 }
 
 </script>
-<script src="index.js"></script>
+
 
         
       </div>
