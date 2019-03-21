@@ -12,7 +12,7 @@ async function getWallData(){
     let WallDataArr = [];
     YG.on('child_added', function(datasnapshot) {
         let obj = Object.assign({},datasnapshot.val());
-        obj.time = new Date(obj.time).Format("MM.dd hh:mm")
+        obj.time = new Date(obj.time).Format("yyyy-MM-dd hh:mm")
         WallDataArr.push(obj)
     });
     return WallDataArr
