@@ -40,15 +40,22 @@ var app = new Vue({
     updated() {
         let boxList = this.$refs.box;
         var colorList = ['#f34c81','#ffe75f','#688dff','#855df3','#23aacf','#ff6f7a','#60b680','#fd9c35','#dd4444'];
-        console.log(boxList)
         boxList.forEach(element => {
             element.style.boxShadow = '5px 5px 2px #ccc'
-            element.style.background = colorList[parseInt(Math.random()*8)]
+            element.style.background = colorList[parseInt(Math.random()*(colorList.length -1 ))]
         });
     },
     methods: {
         openWall(){
             this.openWallSwitch = true;  
+        },
+        downWall(){
+            const nameList = ['石头人','小学僧','托儿所','小跑','墨菲特','伊泽瑞尔','小鱼人','提莫儿','轮子妈','蒙多','雪人','斯巴达','稻草人','卡萨丁','狼人','德玛','男刀','峡峰先谷','红爸爸','蓝爸爸']
+            this.openWallSwitch = false; 
+            let obj = Object.assign({},{"name":this.form.name ? this.form.name : nameList[parseInt(Math.random()*(nameList.length -1 ))],"content" : this.form.content.length > 35 ? this.form.content.slice(0,35) + '..' :  this.form.content,"time" : JSON.stringify(new Date())});
+            YG.push(obj);
+            this.form.name = '';
+            this.form.content = '';
         }
     },
     // watch:{

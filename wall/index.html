@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="liiffe&#39;s Blog">
 <meta property="og:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T10:49:05.375Z">
+<meta property="og:updated_time" content="2019-03-21T11:28:08.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
 <meta name="twitter:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
@@ -324,6 +324,7 @@
         </el-row>
         <hr>
         <div class="list_box">
+            <p style="text-align:center;margin-top:15px;width: 100%" v-show="data.length == 0">暂无评论~ 抢个沙发吧</p>
             <div ref="box" class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
                 <p v-html="i.time" style="margin-bottom:5px;"></p>
                 <p v-html="i.content" style="margin-bottom:20px;font-size: 1.2rem"></p>
@@ -342,7 +343,7 @@
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="openWallSwitch = false">取 消</el-button>
-                <el-button type="primary" @click="openWallSwitch = false">留 言</el-button>
+                <el-button type="primary" @click="downWall">留 言</el-button>
             </div>
         </el-dialog>
     </div>
