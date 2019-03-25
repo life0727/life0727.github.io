@@ -12,7 +12,7 @@ async function getWallData(){
     let WallDataArr = [];
     YG.on('child_added', function(datasnapshot) {
         let obj = Object.assign({},datasnapshot.val());
-        obj.time = JSON.parse(datasnapshot.val().time.replace(/T/g," ")).slice(0,16)
+        obj.time = JSON.parse(datasnapshot.val().time.replace(/T/g," ").replace(/,/g,"  ")).slice(0,16)
         WallDataArr.unshift(obj)
     });
     return WallDataArr
@@ -50,7 +50,7 @@ var app = new Vue({
             this.openWallSwitch = true;  
         },
         downWall(){
-            const nameList = ['石头人','小学僧','托儿所','小跑','墨菲特','伊泽瑞尔','小鱼人','提莫儿','轮子妈','蒙多','雪人','斯巴达','稻草人','卡萨丁','狼人','德玛','男刀','峡峰先谷','红爸爸','蓝爸爸']
+            const nameList = ['石头人','小学僧','托儿所','儿童劫','小跑','墨菲特','伊泽瑞尔','小鱼人','提莫儿','轮子妈','蒙多','雪人','斯巴达','稻草人','卡萨丁','狼人','德玛','男刀','峡峰先谷','红爸爸','蓝爸爸']
             this.openWallSwitch = false; 
             let obj = Object.assign({},{"name":this.form.name ? this.form.name : nameList[parseInt(Math.random()*(nameList.length -1 ))],"content" : this.form.content ? this.form.content.length > 35 ? this.form.content.slice(0,35) + '..' :  this.form.content : '这人懒，啥没写' ,"time" : JSON.stringify(new Date())});
             YG.push(obj);
