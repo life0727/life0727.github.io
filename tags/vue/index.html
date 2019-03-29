@@ -84,17 +84,13 @@
 
 
 
-<meta name="description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:type" content="website">
 <meta property="og:title" content="liiffe&#39;s Blog">
-<meta property="og:url" content="https://life0727.github.io/wall/index.html">
+<meta property="og:url" content="https://life0727.github.io/tags/vue/index.html">
 <meta property="og:site_name" content="liiffe&#39;s Blog">
-<meta property="og:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-21T12:19:29.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liiffe&#39;s Blog">
-<meta name="twitter:description" content="The sun goes down，The stars come outAnd all that counts，Is here and nowMy universe will never be the sameI&apos;m glad you came">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://life0727.github.io/wall/">
+  <link rel="canonical" href="https://life0727.github.io/tags/vue/">
 
 
 
 
 
-  <title> | liiffe's Blog</title>
+  <title>标签: vue | liiffe's Blog</title>
   
 
 
@@ -149,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -285,86 +281,52 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
+  
+  
+  
+  <div class="post-block tag">
 
-	<h1 class="post-title" itemprop="name headline"></h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-        
-        
-          
-
-    <!-- <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.min.css" rel="stylesheet"> -->
-    <link href="index.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/element-ui/2.4.1/theme-chalk/index.css">
-    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-    <script src="https://cdn.bootcss.com/babel-polyfill/6.0.2/polyfill.min.js"></script>
-    <script src="https://cdn.wilddog.com/js/client/current/wilddog.js"></script>
-    <script src="https://cdn.bootcss.com/element-ui/2.4.1/index.js"></script>
-    
-
-    <div id="app">
-        <i class="fa fa-quote-left" style="display:block"></i>
-          <p class="gladYouCame"> The sun goes down，The stars come out<br>And all that counts，Is here and now<br>My universe will never be the same<br>I'm glad you came <i class="fa fa-heart"></i></p>
-          <i class="fa fa-quote-right" style="display:block;float: right;"></i>  
-        <el-row style="text-align: center;margin-top: 15px;">
-            <el-button class="openWall" @click="openWall">我要上墙~</el-button>
-        </el-row>
-        <hr>
-        <div class="list_box" v-loading="data.length == 0" element-loading-text="评论加载中。。" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.1)"> 
-            <p style="text-align:center;margin-top:15px;width: 100%" v-show="data.length == 0">暂无评论~ 抢个沙发吧</p>
-            <div ref="box" class="column" v-for="i in data" :key="i" style="min-height: 9rem;">
-                <p v-html="i.time" style="margin-bottom:5px;"></p>
-                <p v-html="i.content" style="margin-bottom:20px;font-size: 1.2rem"></p>
-                <p v-html="i.name" style="margin:0;position: absolute;right: 15px;bottom: 10px;"></p>
-            </div>
-        </div>
-
-        <el-dialog :visible.sync="openWallSwitch" :append-to-body="true" class="wallDialog">
-            <el-form :model="form">
-                <el-form-item label="名字~" label-width="4rem">
-                    <el-input v-model="form.name" autocomplete="off" placeholder="‘高富帅’ ? ‘高富帅’ : ‘白富美’"></el-input>
-                </el-form-item>
-                <el-form-item label="聊一个~" label-width="4.2rem" style="margin-bottom:0px;">
-                    <el-input type="textarea" v-model="form.content" placeholder="23333......"></el-input>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="openWallSwitch = false">取 消</el-button>
-                <el-button type="primary" @click="downWall" @keyup.enter="downWall">留 言</el-button>
-            </div>
-        </el-dialog>
-    </div>
-
-<script src="index.js"></script>
-<script>
-Date.prototype.toJSON = function () { return this.toLocaleString(); }
-
-</script>
-
-
-        
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>vue<small>标签</small>
+        </h1>
       </div>
+
       
-      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2019/03/29/Object-defineProperty/" itemprop="url">
+              
+                <span itemprop="name">白酒青啤安慕希</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-03-29T12:24:21+08:00" content="2019-03-29">
+          03-29
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
       
     </div>
-    
-    
-    
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -372,10 +334,6 @@ Date.prototype.toJSON = function () { return this.toLocaleString(); }
 
 
           
-
-  
-
-
 
         </div>
         
@@ -618,10 +576,6 @@ Date.prototype.toJSON = function () { return this.toLocaleString(); }
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
