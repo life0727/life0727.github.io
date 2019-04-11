@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[想和你看看星空，只谈夜色与微风]]></title>
     <url>%2F2019%2F04%2F09%2FnextTick%2F</url>
-    <content type="text"><![CDATA[this.$nextTick(() =&gt; ‘blablabla’)。。。]]></content>
+    <content type="text"><![CDATA[this.$nextTick(() =&gt; ‘blablabla’)。。。 前言在之前的项目中，因为经常会用的一些可视化库。所以就不必然的会在数据接收之后操作dom。当初年少无知的我经常因为dom还未“更新”去踩坑甚至到怀疑人生。。。。虽然有些“云程序猿”给了个$(function(){})的解决方法。本着不装逼非程序猿的思维感觉还是有点小low。俗话说世间万物皆有因果，只能怪我当初太年轻没好好看文档。。。 nextTick作用是什么首先我们知道vue的dom更新是异步的。而nextTick则是利用事件循环在dom更新（异步）完毕后再执行。这样其实就解决了上面的提出的获取不到数据变化后dom的问题。 关于异步更新队列官网关于异步更新队列的说明：可能你还没有注意到，Vue 异步执行 DOM 更新。只要观察到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据改变。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部尝试对异步队列使用原生的 Promise.then 和 MessageChannel，如果执行环境不支持，会采用 setTimeout(fn, 0) 代替。 例如，当你设置 vm.someData = ‘new value’ ，该组件不会立即重新渲染。当刷新队列时，组件会在事件循环队列清空时的下一个“tick”更新。多数情况我们不需要关心这个过程，但是如果你想在 DOM 状态更新后做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员沿着“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们确实要这么做。为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用 Vue.nextTick(callback) 。这样回调函数在 DOM 更新完成后就会调用 过滤watcher？不难想到上一篇关于双向绑定的watcher里一笔带过的watcher过滤（其实就是根据watcher的id的判断,虽然代码里也没写）。 事件循环？也就是事件队列也就联系到了宏任务微任务也就可以联系到了setTimout等blabla。。。 带着这两个小问题我们看看vue nextTick源码的实现。 还是要看watcher背景1234567891011121314151617export default &#123; data () &#123; return &#123; msg: 0 &#125; &#125;, mounted () &#123; this.msg = 1 this.msg = 2 this.msg = 3 &#125;, watch: &#123; msg () &#123; console.log(this.msg) //只打印一次3 &#125; &#125;&#125;]]></content>
       <categories>
         <category>js</category>
       </categories>
