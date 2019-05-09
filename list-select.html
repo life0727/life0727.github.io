@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="记录一次反人类需求的实践。。">
+<meta name="description" content="记录一次反人类的爬坑之路。。">
 <meta name="keywords" content="js,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我说今晚月光那么美,你说是的">
 <meta property="og:url" content="https://liiffe.cn/list-select.html">
 <meta property="og:site_name" content="liiffe&#39;s Blog">
-<meta property="og:description" content="记录一次反人类需求的实践。。">
+<meta property="og:description" content="记录一次反人类的爬坑之路。。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://liiffe.cn/list-select/listSelect.jpg">
-<meta property="og:updated_time" content="2019-05-09T09:29:38.890Z">
+<meta property="og:updated_time" content="2019-05-09T10:05:55.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我说今晚月光那么美,你说是的">
-<meta name="twitter:description" content="记录一次反人类需求的实践。。">
+<meta name="twitter:description" content="记录一次反人类的爬坑之路。。">
 <meta name="twitter:image" content="https://liiffe.cn/list-select/listSelect.jpg">
 
 
@@ -393,16 +393,16 @@
       
         <p><img src="/list-select/listSelect.jpg" alt="image"></p>
 <blockquote>
-<p>记录一次反人类需求的实践。。</p>
+<p>记录一次反人类的爬坑之路。。</p>
 </blockquote>
 <a id="more"></a>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>盼望着，盼望着，老大来了，需求的脚步近了。。。</p>
 <p>在我接触的前端表格中（例：邮箱）分页全选是有的，而且操作都是在当前页操作（比如全选当前分页的list然后删除），且切换分页的时候上一分页选中的数据则不保留。但是，我们做的这个分页那就不一样了，既要能全部分</p>
 <p>页都要一键全选而且点击别的分页还要保留之前一页选中的list并且返回点击还要恢复选中的样式（分页单独查询）。wtf？？？？</p>
 <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>听到这话的五分钟里，脑海中浮现了一个删库跑路的念头，然后离职就可以尽情嗨皮，岂不美滋滋。 </p>
-<p>emmmmm  回头看了看钱包一秒回到现实。</p>
-<p>静下心来，仔细一想。写一个缓存数据的id数组，然后每次分页查询的时候对比这个数组，如果返回的数据能和这个id数组匹配到的话就绑定样式。至于全选，模拟一下分页的请求然后全部填到id数组。。。好像给我十分钟我</p>
-<p>也能搞定的样子。然后事实并没有那么简单。。。</p>
+<p>emmmmm  回头看了看钱包一秒回到现实。。。</p>
+<p>静下心来，仔细一想。写一个缓存数据的id数组，然后每次分页查询的时候对比这个数组，如果返回的数据能和这个id数组匹配到的话就绑定样式。至于全选，模拟一下分页的请求然后全部填到id数组。。。</p>
+<p>好像给我十分钟我也能搞定的样子。然后事实并没有那么简单。。。</p>
 <h1 id="初步入坑"><a href="#初步入坑" class="headerlink" title="初步入坑"></a>初步入坑</h1><p>因为用的elementUI框架，所以有自带的触发选择的回调事件，并且变化后选择的数据都给你返回了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select(data)&#123; </span><br><span class="line">   this.selection = data;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>对于对比是否选中了某一行，elementUI也给你集成了切换选中状态的事件：</p>
@@ -417,17 +417,13 @@
 <p>发现选中添加后然后分页切换回来之前分页的数据则没有保留。 找了一下原因是因为toggleRowSelection的时候还会触发切换选中状态的事件也就是又初始化id数组了所以数组永远空值。</p>
 <p>然后就改一下select：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select(data)&#123; </span><br><span class="line">  //this.articlelist_selectIdArr = []; //初始化数组</span><br><span class="line">  data.forEach(item =&gt; this.articlelist_selectIdArr.push(item.id)) </span><br><span class="line">  this.articlelist_selectIdArr = [...this.articlelist_selectIdArr]  //去重</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>这次发现分页切换回来数据已经保留了，但是新问题来了，你取消选择的时候id数组其实并没有执行删除操作而是在之前的基础上又加了这次选择变化后的数据。所以我脑子一抽又想到了个办法就是在点击checkbox添加一个flag</p>
-<p>并且同时改变flag状态为false此时就可以再重新初始化数组，如果点击分页查询操作的时候再设为true这样就保留之前的id数组：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select(data)&#123; </span><br><span class="line">  if(!this.flag) this.articlelist_selectIdArr = []; //初始化数组</span><br><span class="line">  data.forEach(item =&gt; this.articlelist_selectIdArr.push(item.id)) </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pageChange()&#123; </span><br><span class="line">  .... //分页查询的数据业务处理</span><br><span class="line">  this.flag = true;</span><br><span class="line">  this.$nextTick(() =&gt; this.$refs.some-ref.toggleRowSelection(row,true))</span><br><span class="line">  ...</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>这次确实能保证返回分页数据保留并且取消选中时能重新响应“当前页面选中的id”，但是！！！！！ 响应的只是当前页面的选中数据，因为select回调函数的data只是当前页面的选中数据，也就意味着如果你同时全选了1,2,3页</p>
-<p>的数据，然后再第一页取消全选的时候，也就是flag为false的时候你已经又把数组初始化了也就是意味着二三页的数据又没了。。。。 </p>
+<p>这次发现分页切换回来数据已经保留了，但是新问题来了，你取消选择的时候id数组其实并没有执行删除操作而是在之前的基础上又加了这次选择变化后的数据。所以我脑子一抽又想到了个办法就是在点击checkbox添加一个flag并且同时改变flag状态为false此时就可以再重新初始化数组，如果点击分页查询操作的时候再设为true这样就保留之前的id数组：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">select(data)&#123; </span><br><span class="line">  if(!this.flag) this.articlelist_selectIdArr = []; //初始化数组</span><br><span class="line">  data.forEach(item =&gt; this.articlelist_selectIdArr.push(item.id)) </span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">pageChange()&#123; </span><br><span class="line">  .... //分页查询的数据业务处理</span><br><span class="line">  this.flag = true;</span><br><span class="line">  this.$nextTick(() =&gt; this.$refs.some-ref.toggleRowSelection(row,true))</span><br><span class="line">  ...</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>这次确实能保证返回分页数据保留并且取消选中时能重新响应“当前页面选中的id”，但是！！！！！ 响应的只是当前页面的选中数据，因为select函数的data只是当前页面的选中数据，也就意味着如果你全选了1,2,3页的数据然后再第一页取消全选的时候，也就是flag为false的时候你已经又把数组初始化了也就是意味着二三页的数据又没了。。。。 </p>
 <p>现在只能用两个字来形容我现在的思路—————-“僵硬”</p>
-<h1 id="重整思路"><a href="#重整思路" class="headerlink" title="重整思路"></a>重整思路</h1><p>在前面尝试的几种方案后发现确实有的问题还cover不到。重新理了一下，觉得是我的维护数组的方式有问题，不能准确的响应到那一个id选择状态发生了变化（因为select返回的总是选择变化后的数据）;所以我要准确的找到数</p>
-<p>组的哪一项发生了变化，也就是监听select的data，查看是否增加选中、是否取消选中、是否切换页面操作、是否当前页面的操作。然后再分别对应数组的增删：</p>
+<h1 id="重整思路"><a href="#重整思路" class="headerlink" title="重整思路"></a>重整思路</h1><p>在前面尝试的几种方案后发现确实有的问题还cover不到。重新理了一下，觉得是我的维护数组的方式有问题，不能准确的响应到那一个id选择状态发生了变化（因为select返回的总是选择变化后的数据）;所以我要准确的找到数组的哪一项发生了变化，也就是监听select的data，查看是否增加选中、是否取消选中、是否切换页面操作、是否当前页面的操作。然后再分别对应数组的增删：</p>
 <pre><code>select(data){ 
-  this.selectDATA = data;
+  this.selectDATA = data; //绑定监听
 }
 
 pageChange(){  //无变化
@@ -463,7 +459,8 @@ watch:{
             deep:true
         }
     }
-</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>想起了初中数学老师一句话：没有困难，制造困难也要上。 挖坑填坑是程序猿的必经之路，共勉。。。</p>
+</code></pre><p>经测试没啥问题，全选就简单了分页获取然后挨个push。搞定！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>想起了初中数学老师一句话：没有困难，制造困难也要上。 挖坑填坑是程序猿的必经之路，共勉。。。</p>
 
       
     </div>
